@@ -1,0 +1,225 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+\begin{document}
+
+\includegraphics[width=1.56806in,height=0.32083in]{media/image1.png}
+
+\section{Previsão de Afluência -- Reservatório de
+Fiu}\label{previsuxe3o-de-afluuxeancia-reservatuxf3rio-de-fiu}
+
+\section{05/03/2021}\label{section}
+
+\textbf{Chuva Observada}
+
+Tabela 1: Dados de chuva observada na bacia
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\textbf{Dia} & \textbf{Estação} & \textbf{Chuva
+Integrada}\tabularnewline
+\midrule
+\endhead
+& \textbf{Apucaraninha Montante} & \textbf{Barragem PCH
+Apucaraninha}\tabularnewline
+& \textbf{Precipitação (mm)}\tabularnewline
+\textbf{2021-02-26} & \textbf{0,00} & \textbf{0,00}\tabularnewline
+\textbf{2021-02-27} & \textbf{0,00} & \textbf{0,00}\tabularnewline
+\textbf{2021-02-28} & \textbf{3,80} & \textbf{5,80}\tabularnewline
+\textbf{2021-03-01} & \textbf{1,20} & \textbf{2,80}\tabularnewline
+\textbf{2021-03-02} & \textbf{59,60} & \textbf{31,20}\tabularnewline
+\textbf{2021-03-03} & \textbf{5,80} & \textbf{3.80}\tabularnewline
+\textbf{2021-03-04} & \textbf{9,40} & \textbf{1,00}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{Previsão Hidrometeorológica}
+
+\textbf{Modelo Sacramento}
+
+\includegraphics[width=6.30069in,height=3.54444in]{media/image2.tiff}
+
+\protect\hypertarget{OLE_LINK1}{}{\protect\hypertarget{OLE_LINK2}{}{}}Figura
+1: Gráfico de previsão de afluência para o reservatório -- Modelo
+Sacramento
+
+\textbf{Modelo GR5i}
+
+\includegraphics[width=6.30069in,height=3.54444in]{media/image3.tiff}
+
+Figura 2: Gráfico de previsão de afluência para o reservatório -- Modelo
+GR5i
+
+\textbf{\\
+}
+
+\textbf{Detalhamento Previsões}
+
+Tabela 2: Valores de vazão afluente média prevista -- Modelo Sacramento
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\textbf{Hora} & \textbf{Simulação c/ Chuva ECMWF} & \textbf{Simulação c/
+Chuva WRF}\tabularnewline
+\midrule
+\endhead
+& \textbf{Mínimo} & \textbf{Quantil 25}\tabularnewline
+& \textbf{Vazão Média Prevista (m³/s)}\tabularnewline
+\textbf{2021-03-05T06} & \textbf{5,27} & \textbf{5,37}\tabularnewline
+\textbf{2021-03-05T12} & \textbf{5,36} & \textbf{6,20}\tabularnewline
+\textbf{2021-03-05T18} & \textbf{7,06} & \textbf{9,70}\tabularnewline
+\textbf{2021-03-06T00} & \textbf{9,20} & \textbf{13,13}\tabularnewline
+\textbf{2021-03-06T06} & \textbf{10,44} & \textbf{14,67}\tabularnewline
+\textbf{2021-03-06T12} & \textbf{9,96} & \textbf{14,22}\tabularnewline
+\textbf{2021-03-06T18} & \textbf{8,45} & \textbf{12,21}\tabularnewline
+\textbf{2021-03-07T00} & \textbf{6,96} & \textbf{9,91}\tabularnewline
+\textbf{2021-03-07T06} & \textbf{5,80} & \textbf{7,99}\tabularnewline
+\textbf{2021-03-07T12} & \textbf{4,70} & \textbf{6,45}\tabularnewline
+\textbf{2021-03-07T18} & \textbf{3,93} & \textbf{5,41}\tabularnewline
+\textbf{2021-03-08T00} & \textbf{3,56} & \textbf{4,82}\tabularnewline
+\textbf{2021-03-08T06} & \textbf{3,29} & \textbf{4,53}\tabularnewline
+\textbf{2021-03-08T12} & \textbf{3,06} & \textbf{4,14}\tabularnewline
+\textbf{2021-03-08T18} & \textbf{2,77} & \textbf{3,78}\tabularnewline
+\textbf{2021-03-09T00} & \textbf{2,65} & \textbf{3,63}\tabularnewline
+\textbf{2021-03-09T06} & \textbf{2,52} & \textbf{3,43}\tabularnewline
+\textbf{2021-03-09T12} & \textbf{2,42} & \textbf{3,28}\tabularnewline
+\textbf{2021-03-09T18} & \textbf{2,35} & \textbf{3,13}\tabularnewline
+\textbf{2021-03-10T00} & \textbf{2,29} & \textbf{3,05}\tabularnewline
+\textbf{2021-03-10T06} & \textbf{2,25} & \textbf{3,04}\tabularnewline
+\textbf{2021-03-10T12} & \textbf{2,22} & \textbf{2,99}\tabularnewline
+\textbf{2021-03-10T18} & \textbf{2,20} & \textbf{2,89}\tabularnewline
+\textbf{2021-03-11T00} & \textbf{2,19} & \textbf{2,92}\tabularnewline
+\textbf{2021-03-11T06} & \textbf{2,18} & \textbf{2,91}\tabularnewline
+\textbf{2021-03-11T12} & \textbf{2,17} & \textbf{2,90}\tabularnewline
+\textbf{2021-03-11T18} & \textbf{2,16} & \textbf{2,86}\tabularnewline
+\textbf{2021-03-12T00} & \textbf{2,15} & \textbf{2,84}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{Observações:}
+
+- Horários registrados pelo Tempo Coordenado Universal (UTC) / Hora
+Mundial.
+
+- Dados indexados no limite de tempo superior. Ex: Registro de hora
+06:00 contém previsões de vazão média para período 00:01 a 06:00.
+
+- Simulações com Ensemble ECMWF -- Conjunto de 51 forçantes.
+
+- Horário de disparo da previsão: 2021-03-04T00:00 (UTC)
+
+\textbf{\\
+}
+
+Tabela 3: Valores de vazão afluente média prevista -- Modelo GR5i
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\textbf{Hora} & \textbf{Simulação c/ Chuva ECMWF} & \textbf{Simulação c/
+Chuva WRF}\tabularnewline
+\midrule
+\endhead
+& \textbf{Mínimo} & \textbf{Quantil 25}\tabularnewline
+& \textbf{Vazão Média Prevista (m³/s)}\tabularnewline
+\textbf{2021-03-05T06} & \textbf{5,82} & \textbf{5,95}\tabularnewline
+\textbf{2021-03-05T12} & \textbf{6,449} & \textbf{7,215}\tabularnewline
+\textbf{2021-03-05T18} & \textbf{8,298} & \textbf{10,593}\tabularnewline
+\textbf{2021-03-06T00} & \textbf{9,923} & \textbf{12,894}\tabularnewline
+\textbf{2021-03-06T06} & \textbf{10,041} &
+\textbf{12,814}\tabularnewline
+\textbf{2021-03-06T12} & \textbf{9,029} & \textbf{12,068}\tabularnewline
+\textbf{2021-03-06T18} & \textbf{7,721} & \textbf{10,342}\tabularnewline
+\textbf{2021-03-07T00} & \textbf{7,03} & \textbf{9,467}\tabularnewline
+\textbf{2021-03-07T06} & \textbf{6,997} & \textbf{9,023}\tabularnewline
+\textbf{2021-03-07T12} & \textbf{7,032} & \textbf{8,733}\tabularnewline
+\textbf{2021-03-07T18} & \textbf{6,689} & \textbf{8,413}\tabularnewline
+\textbf{2021-03-08T00} & \textbf{6,283} & \textbf{8,236}\tabularnewline
+\textbf{2021-03-08T06} & \textbf{6,011} & \textbf{8,036}\tabularnewline
+\textbf{2021-03-08T12} & \textbf{5,784} & \textbf{7,776}\tabularnewline
+\textbf{2021-03-08T18} & \textbf{5,538} & \textbf{7,347}\tabularnewline
+\textbf{2021-03-09T00} & \textbf{5,302} & \textbf{6,931}\tabularnewline
+\textbf{2021-03-09T06} & \textbf{5,097} & \textbf{6,609}\tabularnewline
+\textbf{2021-03-09T12} & \textbf{4,915} & \textbf{6,357}\tabularnewline
+\textbf{2021-03-09T18} & \textbf{4,724} & \textbf{6,126}\tabularnewline
+\textbf{2021-03-10T00} & \textbf{4,544} & \textbf{5,948}\tabularnewline
+\textbf{2021-03-10T06} & \textbf{4,377} & \textbf{5,699}\tabularnewline
+\textbf{2021-03-10T12} & \textbf{4,222} & \textbf{5,568}\tabularnewline
+\textbf{2021-03-10T18} & \textbf{4,076} & \textbf{5,317}\tabularnewline
+\textbf{2021-03-11T00} & \textbf{3,937} & \textbf{5,072}\tabularnewline
+\textbf{2021-03-11T06} & \textbf{3,805} & \textbf{4,982}\tabularnewline
+\textbf{2021-03-11T12} & \textbf{3,681} & \textbf{4,904}\tabularnewline
+\textbf{2021-03-11T18} & \textbf{3,562} & \textbf{4,66}\tabularnewline
+\textbf{2021-03-12T00} & \textbf{3,449} & \textbf{4,459}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{Observações:}
+
+- Horários registrados pelo Tempo Coordenado Universal (UTC) / Hora
+Mundial.
+
+- Dados indexados no limite de tempo superior. Ex: Registro de hora
+06:00 contém previsões de vazão média para período 00:01 a 06:00.
+
+- Simulações com Ensemble ECMWF -- Conjunto de 51 forçantes.
+
+- Horário de disparo da previsão: 2021-03-04T00:00 (UTC)
+
+\end{document}

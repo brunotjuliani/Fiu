@@ -1,0 +1,38 @@
+<PAMDataset>
+  <Subdataset name="prec_rad_TXS">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">1.2740424871445</MDI>
+          <MDI key="STATISTICS_MEAN">-693.21231690521</MDI>
+          <MDI key="STATISTICS_MINIMUM">-999.90002441406</MDI>
+          <MDI key="STATISTICS_STDDEV">461.14207023923</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+  <Subdataset name="prec_rad_IPMET">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">9.4141292572021</MDI>
+          <MDI key="STATISTICS_MEAN">-959.01188880392</MDI>
+          <MDI key="STATISTICS_MINIMUM">-999.90002441406</MDI>
+          <MDI key="STATISTICS_STDDEV">198.21101185187</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+  <Subdataset name="SIPREC">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">4.5397629737854</MDI>
+          <MDI key="STATISTICS_MEAN">0.014132992847597</MDI>
+          <MDI key="STATISTICS_MINIMUM">0</MDI>
+          <MDI key="STATISTICS_STDDEV">0.16330616776812</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+</PAMDataset>

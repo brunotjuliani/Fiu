@@ -1,11 +1,12 @@
 import pandas as pd
 import numpy as np
 import gr5i
+import sacsma
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
 # Data previsao
-d_prev = '2020-08-16'
+d_prev = '2020-06-26'
 
 # Leitura
 PEQ = pd.read_csv('peq_'+d_prev+'.csv', skiprows=1, index_col='datahora_UTC')
@@ -38,6 +39,7 @@ QsimsGR.to_csv('sim_GR_'+d_prev+'.csv', float_format='%.3f')
 dt = 0.25
 fconv = area/(dt*86.4) # mm -> m3/s
 PAR_S = pd.read_csv('par_sacsma_fiu.csv', index_col='parNome')['parValor']
+QsimsS = pd.DataFrame()
 n = 0
 while n <=50:
     PME = PEQ['pme_'+str(n)].to_numpy()
@@ -62,4 +64,5 @@ fig = go.Figure()
 fig.add_trace(go.Scatter(x=QsimsGR.index, y=QsimsGR['Qmed'], name="GR5i - Qmed (m3/s)", marker_color='blue'))
 fig.add_trace(go.Scatter(x=QsimsS.index, y=QsimsS['Qmed'], name="SACSMA - Qmed (m3/s)", marker_color='red'))
 fig.add_trace(go.Scatter(x=QsimsS.index, y=QsimsS['Qobs'], name="Qobs (m3/s)", marker_color='black'))
+fig.update_yaxes(title_text='Vazão [m3s-1]')
 fig.show()
