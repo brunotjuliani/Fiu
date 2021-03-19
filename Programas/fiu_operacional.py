@@ -649,6 +649,35 @@ QsimsS['Qsac_wrf']=sacsma.simulacao(area, dt, PME, ETP,
             PAR_S['parPCTIM'], PAR_S['parPFREE'], PAR_S['parUZK'],
             PAR_S['parLZPK'], PAR_S['parLZSK'], PAR_S['parZPERC'],
             PAR_S['parREXP'], PAR_S['parK_HU'], PAR_S['parN_HU'])
+#Exporta sem ancoragem
+QsimsS = QsimsS.loc[ini_obs:]
+QsimsS.to_csv(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/sim_sac_bruto_{ano:04d}{mes:02d}{dia:02d}00.csv',
+              index_label='datahora', float_format='%.3f',
+              date_format='%Y-%m-%dT%H:%M:%S+00:00')
+# Plotagem
+fig = make_subplots(rows=3, cols=1, shared_xaxes=True, specs=[[{'rowspan': 1, 'colspan': 1}],[{'rowspan': 2, 'colspan': 1}],[{'rowspan': 0, 'colspan': 0}]])
+fig.add_trace(go.Bar(x=obs_fig.index, y=obs_fig['chuva_mm'], name="PME (mm)", marker=dict(color='black',line=dict(color='black', width=3))), row=1, col=1)
+fig.add_trace(go.Bar(x=dados_prev.index, y=dados_prev['pme_wrf'], name="Previsão WRF (mm)", marker=dict(color='blue',line=dict(color='darkblue', width=1))), row=1, col=1)
+fig['layout']['yaxis']['autorange'] = "reversed"
+fig.layout['bargap']=0
+fig.add_trace(go.Scatter(x=QsimsS.index, y=QsimsS['Q75'], showlegend=False, marker_color='blue'), row=2, col=1)
+fig.add_trace(go.Scatter(x=QsimsS.index, y=QsimsS['Q25'], showlegend=False, marker_color='blue', fill='tonexty'), row=2, col=1)
+n=0
+while n <= 50:
+    fig.add_trace(go.Scatter(x=QsimsS.index, y=QsimsS['Qsac_'+str(n)], showlegend=False, marker_color='darkgray'), row=2, col=1)
+    n += 1
+fig.add_trace(go.Scatter(x=QsimsS.index, y=QsimsS['Q75'], name="Quantil 75 (m3/s)", marker_color='blue'), row=2, col=1)
+fig.add_trace(go.Scatter(x=QsimsS.index, y=QsimsS['Qmed'], name="Mediana (m3/s)", marker_color='red'), row=2, col=1)
+fig.add_trace(go.Scatter(x=QsimsS.index, y=QsimsS['Q25'], name="Quantil 25 (m3/s)", marker_color='blue'), row=2, col=1)
+fig.add_trace(go.Scatter(x=QsimsS.index, y=QsimsS['Qsac_wrf'], name="Simulação WRF (m3/s)", marker_color='green'), row=2, col=1)
+fig.add_trace(go.Scatter(x=obs_fig.index, y=obs_fig['q_m3s'], name="Qobs (m3/s)", marker_color='black'), row=2, col=1)
+fig.update_yaxes(title_text='Chuva [mm]', row=1, col=1)
+fig.update_yaxes(title_text='Vazão [m3s-1]', row=2, col=1)
+fig.update_xaxes(tickformat="%Y-%m-%dT%H")
+fig.update_layout(legend_title_text='Modelo Sacramento')
+fig.update_layout(autosize=False,width=1200,height=675,margin=dict(l=30,r=30,b=10,t=10))
+fig.write_image(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/fig_sac_bruto_{ano:04d}{mes:02d}{dia:02d}00.png')
+
 #Recorta para período de previsao
 QsimsS = QsimsS.loc[d_prev:]
 #Ancoragem
@@ -712,6 +741,38 @@ QsimsGR['Qgr5_wrf']= gr5i.simulacao(PAR_GR['dt'], area, PME, ETP, Qmon,
                                         PAR_GR['x1'], PAR_GR['x2'],
                                         PAR_GR['x3'], PAR_GR['x4'],
                                         PAR_GR['x5'])
+
+#Exporta simulação sem ancoragem
+QsimsGR = QsimsGR.loc[ini_obs:]
+QsimsGR.to_csv(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/sim_gr5_bruto_{ano:04d}{mes:02d}{dia:02d}00.csv',
+              index_label='datahora', float_format='%.3f',
+              date_format='%Y-%m-%dT%H:%M:%S+00:00')
+
+# Plotagem sem ancoragem
+fig = make_subplots(rows=3, cols=1, shared_xaxes=True, specs=[[{'rowspan': 1, 'colspan': 1}],[{'rowspan': 2, 'colspan': 1}],[{'rowspan': 0, 'colspan': 0}]])
+fig.add_trace(go.Bar(x=obs_fig.index, y=obs_fig['chuva_mm'], name="PME (mm)", marker=dict(color='black',line=dict(color='black', width=3))), row=1, col=1)
+fig.add_trace(go.Bar(x=dados_prev.index, y=dados_prev['pme_wrf'], name="Previsão WRF (mm)", marker=dict(color='blue',line=dict(color='darkblue', width=1))), row=1, col=1)
+fig['layout']['yaxis']['autorange'] = "reversed"
+fig.layout['bargap']=0
+fig.add_trace(go.Scatter(x=QsimsGR.index, y=QsimsGR['Q75'], showlegend=False, marker_color='blue'), row=2, col=1)
+fig.add_trace(go.Scatter(x=QsimsGR.index, y=QsimsGR['Q25'], showlegend=False, marker_color='blue', fill='tonexty'), row=2, col=1)
+n=0
+while n <= 50:
+    fig.add_trace(go.Scatter(x=QsimsGR.index, y=QsimsGR['Qgr5_'+str(n)], showlegend=False, marker_color='darkgray'), row=2, col=1)
+    n += 1
+fig.add_trace(go.Scatter(x=QsimsGR.index, y=QsimsGR['Q75'], name="Quantil 75 (m3/s)", marker_color='blue'), row=2, col=1)
+fig.add_trace(go.Scatter(x=QsimsGR.index, y=QsimsGR['Qmed'], name="Mediana (m3/s)", marker_color='red'), row=2, col=1)
+fig.add_trace(go.Scatter(x=QsimsGR.index, y=QsimsGR['Q25'], name="Quantil 25 (m3/s)", marker_color='blue'), row=2, col=1)
+fig.add_trace(go.Scatter(x=QsimsGR.index, y=QsimsGR['Qgr5_wrf'], name="Simulação WRF (m3/s)", marker_color='green'), row=2, col=1)
+fig.add_trace(go.Scatter(x=obs_fig.index, y=obs_fig['q_m3s'], name="Qobs (m3/s)", marker_color='black'), row=2, col=1)
+fig.update_yaxes(title_text='Chuva [mm]', row=1, col=1)
+fig.update_yaxes(title_text='Vazão [m3s-1]', row=2, col=1)
+fig.update_xaxes(tickformat="%Y-%m-%dT%H")
+fig.update_layout(legend_title_text='Modelo GR5i')
+fig.update_layout(autosize=False,width=1200,height=675,margin=dict(l=30,r=30,b=10,t=10))
+fig.write_image(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/fig_gr5i_bruto_{ano:04d}{mes:02d}{dia:02d}00.png')
+
+
 #Recorta para período de previsao
 QsimsGR = QsimsGR.loc[d_prev:]
 #Ancoragem

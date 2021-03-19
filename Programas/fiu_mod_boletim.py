@@ -87,7 +87,7 @@ script.write(f'''
 
 \\begin{{figure}}[ht]
     \\centering
-    \\includegraphics[height=300pt]{{area_fiu.jpeg}}
+    \\includegraphics[height=300pt]{{area_fiu.png}}
     \\vspace{{6pt}}
     \\caption{{Bacia de Fiu}}
 \\end{{figure}}
@@ -221,7 +221,7 @@ script.write(f'''
 \\end{{table}}
 
 \\begin{{itemize}}
-    \\item Horário de disparo da previsão: 2021-03-04T00:00 (UTC).
+    \\item Horário de disparo da previsão: {df_sac.index[0]} (UTC).
     \\item Horários registrados pelo Tempo Coordenado Universal (UTC) / Hora Mundial.
     \\item Dados indexados no limite superior de tempo. Ex: Registro de 06:00 contém previsões de vazão média para período 00:01 a 06:00.
     \\item Simulações com Ensemble ECMWF - Conjunto de 51 forçantes.
@@ -303,7 +303,7 @@ script.write(f'''
 \\end{{table}}
 
 \\begin{{itemize}}
-    \\item Horário de disparo da previsão: 2021-03-04T00:00 (UTC).
+    \\item Horário de disparo da previsão: {df_gr5.index[0]} (UTC).
     \\item Horários registrados pelo Tempo Coordenado Universal (UTC) / Hora Mundial.
     \\item Dados indexados no limite superior de tempo. Ex: Registro de 06:00 contém previsões de vazão média para período 00:01 a 06:00.
     \\item Simulações com Ensemble ECMWF - Conjunto de 51 forçantes.
@@ -320,6 +320,6 @@ os.system(f'scp -r ../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/fig_gr5i_mod_{
 os.system('pdflatex boletim_mod.tex')
 os.system(f'mv boletim_mod.pdf ../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/bol_mod_{ano:04d}{mes:02d}{dia:02d}.pdf')
 os.system(f'rm -r fig_sac_mod_{ano:04d}{mes:02d}{dia:02d}00.png')
-os.system(f'rm -r fig_gr5i__mod{ano:04d}{mes:02d}{dia:02d}00.png')
+os.system(f'rm -r fig_gr5i_mod_{ano:04d}{mes:02d}{dia:02d}00.png')
 os.system('rm -r  boletim_mod.log')
 os.system('rm -r  boletim_mod.aux')

@@ -708,7 +708,7 @@ QsimsS['Qsac_wrf']=sacsma.simulacao(area, dt, PME, ETP,
             PAR_S['parPCTIM'], PAR_S['parPFREE'], PAR_S['parUZK'],
             PAR_S['parLZPK'], PAR_S['parLZSK'], PAR_S['parZPERC'],
             PAR_S['parREXP'], PAR_S['parK_HU'], PAR_S['parN_HU'])
-QsimsS = QsimsS.loc[ini_obs:]
+QsimsS = QsimsS.loc[d_prev:]
 q_atual_sac = QsimsS.loc[d_prev,'Qsac_wrf']
 QsimsS = QsimsS * q_atual_obs/q_atual_sac
 
@@ -774,7 +774,7 @@ if dif_gr > 0:
         print('Tentativa - incremento = ', str(incremento))
         dados_perturb = dados_precip.copy()
         dados_perturb.loc[:dispara] += incremento
-        QsimsGR = pd.Dataframe()
+        QsimsGR = pd.DataFrame()
         #Simula para WRF
         PME = dados_perturb['pme_wrf'].to_numpy()
         QsimsGR['Qgr5_wrf']= gr5i.simulacao(PAR_GR['dt'], area, PME, ETP, Qmon,
@@ -820,7 +820,7 @@ QsimsGR['Qgr5_wrf']= gr5i.simulacao(PAR_GR['dt'], area, PME, ETP, Qmon,
                                         PAR_GR['x1'], PAR_GR['x2'],
                                         PAR_GR['x3'], PAR_GR['x4'],
                                         PAR_GR['x5'])
-QsimsGR = QsimsGR.loc[ini_obs:]
+QsimsGR = QsimsGR.loc[d_prev:]
 q_atual_gr5 = QsimsGR.loc[d_prev,'Qgr5_wrf']
 QsimsGR = QsimsGR * q_atual_obs/q_atual_gr5
 
