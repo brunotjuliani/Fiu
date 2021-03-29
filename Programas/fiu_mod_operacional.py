@@ -512,7 +512,7 @@ print('Atualizando dados históricos observados - Vazão')
 q_hist = pd.read_csv('../Dados/vazao_fiu.csv', index_col='datahora')
 q_hist.index = pd.to_datetime(q_hist.index, utc=True)
 #Se serie já atualizada no mesmo dia, apenas lê variável.
-if data0 == d_prev:
+if data0 == q_hist.index[-1]:
     pass
 else:
     # Coleta dados atualizados por API - atualiza 7 dias previos para possiveis nans recuperados

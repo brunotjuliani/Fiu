@@ -91,10 +91,10 @@ def simulacao(area, dt, PME, ETP, params, Qmon=None, estados=None):
     PAREA = 1 - ADIMP - PCTIM
 
     # Inicializacao das vazoes de simulacao
-    Qbfp = np.array([0]) # baseflow - primary
-    Qbfs = np.array([0]) # baseflow - supplemental
-    Qtci = np.array([0]) # total channel inflow
-    Qtco = np.array([0]) # total channel outflow
+    Qbfp = np.array([]) # baseflow - primary
+    Qbfs = np.array([]) # baseflow - supplemental
+    Qtci = np.array([]) # total channel inflow
+    Qtco = np.array([]) # total channel outflow
 
     ############################################################################
     # Inicio do loop externo
@@ -422,6 +422,11 @@ class spotpy(object):
         if self.fobj == 'LOG':
             df_cal['fmin'] = df_cal.apply(lambda x: (np.log(x['qsim']) - np.log(x['qobs']))**2, axis=1)
             fmin = df_cal['fmin'].sum()
+
+        #NSE
+        if self.fobj == 'NSE':
+            NSE = 1 - np.sum((df_cal['qsim']-df_cal['qobs'])**2)/np.sum((df_cal['qobs']-np.mean(df_cal['qobs']))**2)
+            fmin = 1 - NSE
 
         else:
             print('Sem funcao objetivo definida???')

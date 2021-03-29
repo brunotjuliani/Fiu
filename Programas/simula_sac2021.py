@@ -13,7 +13,6 @@ ETP = PEQ['etp'].to_numpy()
 Qjus = PEQ['qjus'].to_numpy()
 fconv = area/(dt*86.4) # mm -> m3/s
 PAR = pd.read_csv('par_sacsma_fiu.csv', index_col='parNome')['parValor']
-params = pd.read_csv('par_sacsma2021_fiu.csv', index_col='parNome').to_dict('dict')['parValor']
 Qsim= sacsma.simulacao(area, dt, PME, ETP,
                         PAR['parUZTWM'], PAR['parUZFWM'], PAR['parLZTWM'], PAR['parLZFPM'], PAR['parLZFSM'],
                         PAR['parADIMP'], PAR['parPCTIM'], PAR['parPFREE'],
@@ -21,6 +20,7 @@ Qsim= sacsma.simulacao(area, dt, PME, ETP,
                         PAR['parZPERC'], PAR['parREXP'],
                         PAR['parK_HU'], PAR['parN_HU'])
 
+params = pd.read_csv('par_sacsma2021_fiu.csv', index_col='parNome').to_dict('dict')['parValor']
 Qsim2021, Qbfp, Qbfs, Qtci, Qtco = sacsma2021.simulacao(area, dt, PME, ETP, params, Qmon=None, estados=None)
 
 
