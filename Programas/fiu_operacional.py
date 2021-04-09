@@ -423,11 +423,11 @@ while ens_n <= 50:
         df_previsao.loc[horizonte,'datahora'] = previsao.isoformat()
 
         ## LEITURA DO ARQUIVO GRIB - 1 HORIZONTE DE PREVISÃO - ENSEMBLE COM N DADOS
-        grbfile = f"/simepar/modelos/ecmwf/ens/SCPRSPRJ/0p2/pos/{ano:04d}/{mes:02d}/{dia:02d}/00/D1X{mes:02d}{dia:02d}0000{prev_mes:02d}{prev_dia:02d}{prev_hora:02d}001.grib2"
+        grbfile = f"/simepar/modelos/ecmwf/ens/SSE/0p2/pos/{ano:04d}/{mes:02d}/{dia:02d}/00/D1E{mes:02d}{dia:02d}0000{prev_mes:02d}{prev_dia:02d}{prev_hora:02d}001.grib2"
         try:
             grbs = pygrib.open(grbfile)
         except:
-            grbfile = f"/simepar/modelos/ecmwf/ens/SCPRSPRJ/0p2/pos/{ano:04d}/{mes:02d}/{dia:02d}/00/D1E{mes:02d}{dia:02d}0000{prev_mes:02d}{prev_dia:02d}{prev_hora:02d}001.grib2"
+            grbfile = f"/simepar/modelos/ecmwf/ens/SSE/0p2/pos/{ano:04d}/{mes:02d}/{dia:02d}/00/D1X{mes:02d}{dia:02d}0000{prev_mes:02d}{prev_dia:02d}{prev_hora:02d}001.grib2"
             try:
                 grbs = pygrib.open(grbfile)
                 pass
