@@ -71,7 +71,7 @@ def sim(X):
 ### LEITURA FORÇANTES
 bn = 'XX'
 bnome = 'Fiu'
-m_hrs = 12
+m_hrs = 6
 area = pd.read_csv(f'../Dados/{bnome}_peq.csv', nrows=1, header=None).values[0][0]
 dt = 0.25 # 6 hr
 PEQ = pd.read_csv(f'../Dados/{bnome}_peq.csv', skiprows=1,
@@ -80,7 +80,7 @@ PME = PEQ['pme']
 ETP = PEQ['etp']
 Qobs = PEQ[f'M_{m_hrs}'].rename('qobs')
 idx = PME.index
-idx_cal = idx[idx > '2015-01-01']
+idx_cal = idx[idx > '2019-01-01']
 Xmin = Xmin[:-3] # desconsidera os parametros de propagacao (Qmon=None)
 Xmax = Xmax[:-3] # desconsidera os parametros de propagacao (Qmon=None)
 
