@@ -650,6 +650,7 @@ if dif_sac > 0:
     print('Modificando chuva aquecimento - Sacramento')
     inc_0 = 0
     taxa = 1
+    incremento = inc_0
     while abs(dif_sac) > 0.05:
         incremento = inc_0 + taxa
         print('Tentativa - incremento = ', str(incremento))
@@ -740,7 +741,14 @@ fig.update_yaxes(title_text='Vazão [m3s-1]', row=2, col=1)
 fig.update_xaxes(tickformat="%Y-%m-%dT%H")
 fig.update_layout(legend_title_text='Modelo Sacramento')
 fig.update_layout(autosize=False,width=1200,height=675,margin=dict(l=30,r=30,b=10,t=10))
-fig.write_image(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/fig_sac_mod_{ano:04d}{mes:02d}{dia:02d}00.png')
+try:
+    fig.write_image(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/fig_sac_mod_{ano:04d}{mes:02d}{dia:02d}00.png')
+except Exception as e:
+    print('Falha ao salvar a figura de simulacao Sacramento em .png')
+    print(e)
+    print('Será exportado figura em HTML. Deve ser exportada com configuracoes .png, mantendo o nome.')
+    fig.write_html(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/fig_sac_mod_{ano:04d}{mes:02d}{dia:02d}00.html')
+    fig.show()
 
 ################################################################################
 ################################################################################
@@ -770,6 +778,7 @@ if dif_gr > 0:
     print('Modificando chuva aquecimento - GR5i')
     inc_0 = 0
     taxa = 1
+    incremento = inc_0
     while abs(dif_gr) > 0.05:
         incremento = inc_0 + taxa
         print('Tentativa - incremento = ', str(incremento))
@@ -852,8 +861,14 @@ fig.update_yaxes(title_text='Vazão [m3s-1]', row=2, col=1)
 fig.update_xaxes(tickformat="%Y-%m-%dT%H")
 fig.update_layout(legend_title_text='Modelo GR5i')
 fig.update_layout(autosize=False,width=1200,height=675,margin=dict(l=30,r=30,b=10,t=10))
-fig.write_image(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/fig_gr5i_mod_{ano:04d}{mes:02d}{dia:02d}00.png')
-
+try:
+    fig.write_image(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/fig_gr5i_mod_{ano:04d}{mes:02d}{dia:02d}00.png')
+except Exception as e:
+    print('Falha ao salvar a figura de simulacao GR5i em .png')
+    print(e)
+    print('Será exportado figura em HTML. Deve ser exportada com configuracoes .png, mantendo o nome.')
+    fig.write_html(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/fig_gr5i_mod_{ano:04d}{mes:02d}{dia:02d}00.html')
+    fig.show()
 
 ################################################################################
 ################################################################################
