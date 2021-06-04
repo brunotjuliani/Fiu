@@ -266,7 +266,7 @@ else:
             mes_att = lista_att[d].month
             dia_att = lista_att[d].day
             # Le arquivo SIPREC+ (CONFIRMAR SE ESTA EM UTC OU BRT)
-            siprec = pd.read_csv(f'~/infohidro/hidrologia_operacional/estimativas_chuva/siprec_mais_fiu_{ano_att:04d}{mes_att:02d}{dia_att:02d}00.csv', index_col = 0, header=None).T
+            siprec = pd.read_csv(f'~/infohidro/hidrologia_operacional/estimativas_chuva/fiu/siprec_mais_fiu_{ano_att:04d}{mes_att:02d}{dia_att:02d}00.csv', index_col = 0, header=None).T
             siprec.index = pd.to_datetime(siprec['FID'], format='%Y%m%d%H%M', utc=True).rename('datahora')
             siprec = siprec.drop('FID',1)
             siprec.columns = ['chuva_mm']
