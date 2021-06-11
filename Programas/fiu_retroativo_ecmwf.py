@@ -23,7 +23,7 @@ def haversine(lon1, lat1, lon2, lat2):
     d = R * c #retorna distancia em km
     return(d)
 
-dispara = dt.datetime(2021, 5, 14,  00, tzinfo=dt.timezone.utc)
+dispara = dt.datetime(2019, 5, 31,  00, tzinfo=dt.timezone.utc)
 ano = dispara.year
 mes = dispara.month
 dia = dispara.day
@@ -38,6 +38,19 @@ maxy20k = max(grade['y']) + 0.2
 
 grbfile = f"../Dados/ECMWF_Grib/ECMWF_SSE05p01_SFC{ano:04d}{mes:02d}{dia:02d}_00.grib2"
 grbs = pygrib.open(grbfile)
+
+# membro = grbs.select(perturbationNumber=3, step=90)
+# membro[0].data(lat1=miny20k, lat2=maxy20k, lon1=minx20k, lon2=maxx20k)
+#
+# grbfile2 = f"../Dados/ECMWF_Grib/D1E05140000051718001.grib2"
+# minx20k2 = min(grade['x']) + 360 - 0.2
+# maxx20k2 = max(grade['x']) + 360 + 0.2
+# grbs2 = pygrib.open(grbfile2)
+# membro2 = grbs2.select(perturbationNumber=3)
+# data, lats, lons = membro2[0].data(lat1=miny20k, lat2=maxy20k, lon1=minx20k2, lon2=maxx20k2)
+# data2 = 1000 * np.hstack(data)
+# data2
+# data
 
 # Inicia dataframe p/ diferentes membros
 dados_peq = pd.DataFrame()
@@ -63,7 +76,7 @@ while ens_n <= 50:
 
         # Seleciona membro do ensemble e le variaveis
         data, lats, lons = membro[0].data(lat1=miny20k, lat2=maxy20k, lon1=minx20k, lon2=maxx20k)
-        data2 = np.hstack(data)
+        data2 = np.hstack(data) * 1000
         # Divide dataframe para os pontos estudados
         ponto = 0
         while ponto < len(data2):
@@ -78,6 +91,8 @@ while ens_n <= 50:
     df_previsao = df_previsao.dropna(axis = 0, how = 'all')
     # Separa chuva por passo de tempo do acumulado - fillna para lidar com primeira linha
     df_discreto = df_previsao.diff().fillna(df_previsao.iloc[0])
+    # # Retroativo talvez não esteja como acumulado, mas sim discreto. Tentativa de resolver
+    # df_discreto = df_previsao.copy()
     # Acumula para passo de tempo de 6 horas
     df_6hrs = df_discreto.resample("6H", closed='right', label = 'right').sum()
 
@@ -122,7 +137,7 @@ while ens_n <= 50:
     dados_peq['pme_'+str(ens_n)] = pme_prev['chuva_mm']
     ens_n += 1
 
-dados_peq.to_csv(f'../fiu_ECMWF_{ano:04d}{mes:02d}{dia:02d}.csv',
+dados_peq.to_csv(f'../Dados/ECMWF_Grib/fiu_ECMWF_{ano:04d}{mes:02d}{dia:02d}.csv',
                  date_format='%Y-%m-%dT%H:%M:%S+00:00', sep = ",")
 
 # ens_n = 0
