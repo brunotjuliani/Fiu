@@ -29,13 +29,16 @@ for posto_nome, posto_informacoes in postos_precip.items():
     sr_posto = pd.read_csv('../Dados/Postos_Plu/diario_'+posto_nome+'.csv',
                            parse_dates=True, index_col='data')
     sr_posto = sr_posto['chuva_mm'].rename(posto_nome)
+    sr_posto.index = sr_posto.index.strftime('%Y-%m-%d')
     df_obs = df_obs.join(sr_posto, how='left')
 #Dados chuva integrada na bacia
 sr_pme = pd.read_csv('../Dados/diario_pme_fiu.csv', parse_dates=True, index_col='data')
 sr_pme = sr_pme['chuva_mm'].rename('Chuva_Integrada')
+sr_pme.index = sr_pme.index.strftime('%Y-%m-%d')
 df_obs = df_obs.join(sr_pme, how='left')
 df_obs = df_obs.round(1)
-df_obs.index = df_obs.index.strftime('%Y-%m-%d')
+#df_obs.index = pd.to_datetime(df_obs.index)
+#df_obs.index = df_obs.index.strftime('%Y-%m-%d')
 
 #TABELA 2 - Previsao Sacramento
 df_sac = pd.read_csv(f'../Simulacoes/{ano:04d}_{mes:02d}_{dia:02d}_00/sim_sac_mod_{ano:04d}{mes:02d}{dia:02d}00.csv',
