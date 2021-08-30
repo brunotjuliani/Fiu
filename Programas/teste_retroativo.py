@@ -6,7 +6,7 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
 # Leitura
-dispara = dt.datetime(2021, 8, 13,  00, tzinfo=dt.timezone.utc)
+dispara = dt.datetime(2021, 8, 20,  00, tzinfo=dt.timezone.utc)
 d_prev = dispara.isoformat()
 ini_obs = dispara-dt.timedelta(days=5)
 ini_obs = ini_obs.isoformat()
