@@ -8,6 +8,7 @@ import math
 import csv
 import sacsma
 import gr5i
+import os
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 from pathlib import Path
@@ -270,6 +271,8 @@ else:
             siprec.index = pd.to_datetime(siprec['FID'], format='%Y%m%d%H%M', utc=True).rename('datahora')
             siprec = siprec.drop('FID',1)
             siprec.columns = ['chuva_mm']
+            # Limpa diretorio SIPREC+ (+7 dias)
+            os.system('find ~/infohidro/hidrologia_operacional/estimativas_chuva/fiu -type f -mtime +7 -delete')
             # Atualiza serie historica com arquivos do SIPREC
             pme_att = pd.concat([pme_hist_sip, siprec])
             pme_att = pme_att[~pme_att.index.duplicated(keep='last')]
