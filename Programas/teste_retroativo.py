@@ -6,7 +6,7 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
 # Leitura
-dispara = dt.datetime(2021, 9, 3,  00, tzinfo=dt.timezone.utc)
+dispara = dt.datetime(2021, 9, 10,  00, tzinfo=dt.timezone.utc)
 d_prev = dispara.isoformat()
 ini_obs = dispara-dt.timedelta(days=5)
 ini_obs = ini_obs.isoformat()
@@ -45,7 +45,6 @@ chuva_obs['ecmwf_med_acum'] = chuva_obs['chuva_ecmwf_med'].cumsum()
 chuva_obs['ecmwf_Q25_acum'] = chuva_obs['chuva_ecmwf_Q25'].cumsum()
 chuva_obs['ecmwf_Q75_acum'] = chuva_obs['chuva_ecmwf_Q75'].cumsum()
 chuva_acum_atual = chuva_obs.loc[d_prev,'obs_acum']
-
 
 dados_peq = pd.DataFrame()
 dados_peq['etp_mm'] = pd.concat([dados_obs['etp_mm'], dados_prev['etp']])
@@ -155,8 +154,6 @@ QsimsS['Qsac_wrf']=sacsma.simulacao(area, dt, PME, ETP,
 QsimsS = QsimsS.loc[ini_obs:]
 q_atual_sac = QsimsS.loc[d_prev,'Qsac_wrf']
 QsimsS = QsimsS * q_atual_obs/q_atual_sac
-
-
 
 # Plotagem
 fig = make_subplots(rows=3, cols=1, shared_xaxes=True, specs=[[{'rowspan': 1, 'colspan': 1}],[{'rowspan': 2, 'colspan': 1}],[{'rowspan': 0, 'colspan': 0}]])
